@@ -11,7 +11,7 @@ import { FormControl } from '@angular/forms';
 })
 export class AcoesComponent {
   acoesInput = new FormControl();
-  acoes$ = this.acoesService.getAcoes();
+  acoes$ = this.acoesInput.valueChanges.pipe(tap(console.log))
 
   constructor(private acoesService: AcoesService) {}
 
