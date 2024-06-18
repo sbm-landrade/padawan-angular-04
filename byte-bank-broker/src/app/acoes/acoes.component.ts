@@ -9,20 +9,10 @@ import { FormControl } from '@angular/forms';
   templateUrl: './acoes.component.html',
   styleUrls: ['./acoes.component.css'],
 })
-export class AcoesComponent implements OnInit {
+export class AcoesComponent {
   acoesInput = new FormControl();
-  acoes: Acoes;
-  private subscription: Subscription;
+  acoes$ = this.acoesService.getAcoes();
 
   constructor(private acoesService: AcoesService) {}
 
-  ngOnInit() {
-    this.acoesService.getAcoes().subscribe((retornoApi)=>{
-      this.acoes = acoes;
-    })
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 }
